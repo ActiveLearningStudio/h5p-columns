@@ -4,6 +4,7 @@
     "type": "list",
     "min": 1,
     "entity": "column",
+    "label": "Columns",
     "field": {
       "name": "column",
       "type": "group",
@@ -28,7 +29,7 @@
         {
           "name": "cssClass",
           "type": "text",
-          "label": "cssClass",
+          "label": "CSS Class",
           "description": "Optional CSS class to be added to the column for styling purposes",
           "optional": true
         },

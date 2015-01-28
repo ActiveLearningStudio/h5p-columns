@@ -23,5 +23,12 @@
     {
       "path": "css/columns.css"
     }
+  ],
+  "preloadedDependencies": [
+    {
+      "machineName": "H5P.QuestionContainer",
+      "majorVersion": 1,
+      "minorVersion": 0
+    }
   ]
 }
