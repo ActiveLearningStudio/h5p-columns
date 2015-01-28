@@ -1,0 +1,46 @@
+[
+  {
+    "name": "columns",
+    "type": "list",
+    "min": 1,
+    "entity": "column",
+    "field": {
+      "name": "column",
+      "type": "group",
+      "label": "Column",
+      "fields": [
+        {
+          "name": "heading",
+          "type": "text",
+          "optional": true,
+          "label": "Heading for this column",
+          "description": "Optional column heading"
+        },
+        {
+          "name": "width",
+          "type": "number",
+          "label": "Width",
+          "description": "The columns width in percentage",
+          "min": 0,
+          "max": 100,
+          "default": 100
+        },
+        {
+          "name": "cssClass",
+          "type": "text",
+          "label": "cssClass",
+          "description": "Optional CSS class to be added to the column for styling purposes",
+          "optional": true
+        },
+        {
+          "name": "column",
+          "type": "library",
+          "label": "Content",
+          "options": [
+            "H5P.Column 1.0"
+          ]
+        }
+      ]
+    }
+  }
+]
