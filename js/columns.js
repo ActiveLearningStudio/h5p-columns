@@ -14,10 +14,10 @@ H5P.Columns = (function ($) {
       return new H5P.Columns(content, contentId);
     }
 
-    H5P.QuestionContainer.call(this);
+    H5P.QuestionContainer.call(this, content.columns, contentId);
     
     var defaults = {
-      columns: [],
+      columns: []
     };
     this.params = $.extend(true, {}, defaults, content);
 
@@ -26,10 +26,9 @@ H5P.Columns = (function ($) {
     
     // Instantiate column instances
     for (var i = 0; i < this.params.columns.length; i++) {
-      var columnData = this.params.content[i];
-
+      var columnData = this.params.columns[i].column;
       // override content parameters.
-      if (this.params.override.overrideButtons) {
+      if (this.params.override && this.params.override.overrideButtons) {
         // Extend subcontent with the overrided settings.
         $.extend(columnData.params.behaviour, {
           enableRetry: this.params.override.overrideRetry,
@@ -64,7 +63,8 @@ H5P.Columns = (function ($) {
     for (var i = 0; i < this.columns.length; i++) {
       var column = this.columns[i];
       
-      var $columnHolder = $('<div class="h5p-column"></div>');
+      var $columnHolder = $('<div class="h5p-column"></div>')
+        .css("width", this.params.columns[i].width + '%');
 
       column.attach($columnHolder);
       this.$myDom.append($columnHolder);
