@@ -24,6 +24,8 @@ H5P.Columns = (function ($) {
     this.columns = new Array();
     this.$myDom;
     
+    var totalWidth = 0;
+    
     // Instantiate column instances
     for (var i = 0; i < this.params.columns.length; i++) {
       var columnData = this.params.columns[i].column;
@@ -35,13 +37,22 @@ H5P.Columns = (function ($) {
           enableSolutionsButton: this.params.override.overrideShowSolutionButton
         });
       }
+      
+      totalWidth += this.params.columns[i].width;
 
       $.extend(columnData.params, {
         postUserStatistics: false
       });
       
+      
+      
       this.columns.push(H5P.newRunnable(columnData, contentId));
     }
+    
+    for (var i = 0; i < this.params.columns.length; i++) {
+      this.params.columns[i].relativeWidth = this.params.columns[i].width / totalWidth * 99.999999;
+    }
+    console.log(this.params);
   }
   
   C.prototype = Object.create(H5P.QuestionContainer.prototype);
@@ -64,7 +75,7 @@ H5P.Columns = (function ($) {
       var column = this.columns[i];
       
       var $columnHolder = $('<div class="h5p-column"></div>')
-        .css("width", this.params.columns[i].width + '%');
+        .css("width", this.params.columns[i].relativeWidth + '%');
 
       column.attach($columnHolder);
       this.$myDom.append($columnHolder);
