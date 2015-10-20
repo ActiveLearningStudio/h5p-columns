@@ -52,7 +52,6 @@ H5P.Columns = (function ($) {
     for (var i = 0; i < this.params.columns.length; i++) {
       this.params.columns[i].relativeWidth = this.params.columns[i].width / totalWidth * 99.999999;
     }
-    console.log(this.params);
   }
   
   C.prototype = Object.create(H5P.QuestionContainer.prototype);
