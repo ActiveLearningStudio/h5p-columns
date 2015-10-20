@@ -43,5 +43,26 @@
         }
       ]
     }
+  },
+  {
+    "name": "type",
+    "type": "select",
+    "label": "Type",
+    "description": "What kind of content will be in these columns?",
+    "options": [
+      {
+        "value": "div",
+        "label": "Misc (div tag will be used)"
+      },
+      {
+        "value": "section",
+        "label": "Section of an article (section tag will be used)"
+      },
+      {
+        "value": "article",
+        "label": "Self standing article (section tag will be used)"
+      }
+    ],
+    "default": "div"
   }
 ]

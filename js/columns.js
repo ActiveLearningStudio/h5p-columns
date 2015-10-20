@@ -17,7 +17,8 @@ H5P.Columns = (function ($) {
     H5P.QuestionContainer.call(this, content.columns, contentId);
     
     var defaults = {
-      columns: []
+      columns: [],
+      type: 'div'
     };
     this.params = $.extend(true, {}, defaults, content);
 
@@ -62,15 +63,14 @@ H5P.Columns = (function ($) {
 
   // Function for attaching the pages to a dom element.
   C.prototype.attach = function (target) {
-    // TODO: Add code that creates the actual HTML
+    var $target;
     if (typeof(target) === "string") {
-      this.$myDom = $('#' + target);
+      $target = $('#' + target);
     }
     else {
-      this.$myDom = $(target);
+      $target = $(target);
     }
-    
-    this.$myDom.addClass('h5p-columns');
+    this.$myDom = $('<' + this.params.type + '>').addClass('h5p-columns').appendTo($target);
 
     // Attach columns
     for (var i = 0; i < this.columns.length; i++) {
@@ -79,6 +79,10 @@ H5P.Columns = (function ($) {
       var $columnHolder = $('<div class="h5p-column"></div>')
         .css("width", this.params.columns[i].relativeWidth + '%');
 
+      if (this.params.columns[i].cssClass !== '') {
+        $columnHolder.addClass(this.params.columns[i].cssClass);
+      }
+      
       column.attach($columnHolder);
       this.$myDom.append($columnHolder);
     }
