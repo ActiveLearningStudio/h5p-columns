@@ -49,8 +49,11 @@ H5P.Columns = (function ($) {
       this.columns.push(H5P.newRunnable(columnData, contentId));
     }
     
+    // Make space for a 2 % margin:
+    var sumColWidth = (99.999999 - 2 * (this.params.columns.length - 1));
+    
     for (var i = 0; i < this.params.columns.length; i++) {
-      this.params.columns[i].relativeWidth = this.params.columns[i].width / totalWidth * 99.999999;
+      this.params.columns[i].relativeWidth = this.params.columns[i].width / totalWidth * sumColWidth;
     }
   }
   
